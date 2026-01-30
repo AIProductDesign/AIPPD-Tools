@@ -9,6 +9,7 @@ interface ToolsExplorerProps {
 
 export function ToolsExplorer({ selectedPhase }: ToolsExplorerProps) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [showAll, setShowAll] = useState(false);
 
   const filteredTools = aiTools.filter(tool => {
     const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -17,6 +18,8 @@ export function ToolsExplorer({ selectedPhase }: ToolsExplorerProps) {
     const matchesPhase = !selectedPhase || tool.phases.includes(selectedPhase);
     return matchesSearch && matchesPhase;
   });
+
+  const displayedTools = showAll ? filteredTools : filteredTools.slice(0, 6);
 
   return (
     <section id="tools" className="max-w-7xl mx-auto px-6 py-20 bg-slate-50 rounded-3xl">
@@ -43,7 +46,7 @@ export function ToolsExplorer({ selectedPhase }: ToolsExplorerProps) {
 
       {/* Tools Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredTools.map((tool) => (
+        {displayedTools.map((tool) => (
           <div key={tool.id} className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg transition-shadow">
             <div className="flex items-start justify-between mb-4">
               <div>
@@ -94,6 +97,18 @@ export function ToolsExplorer({ selectedPhase }: ToolsExplorerProps) {
           </div>
         ))}
       </div>
+
+      {/* Show More Button */}
+      {filteredTools.length > 6 && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+          >
+            {showAll ? 'Show Less' : `Show More (${filteredTools.length - 6} more)`}
+          </button>
+        </div>
+      )}
 
       {filteredTools.length === 0 && (
         <div className="text-center py-12 text-slate-500">
