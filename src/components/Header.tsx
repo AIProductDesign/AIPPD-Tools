@@ -14,6 +14,7 @@ export function Header() {
           </div>
         </div>
         <nav className="hidden md:flex gap-6">
+          <a href="https://aiproductdesign.github.io/website/" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">TETRA Project</a>
           <a href="#process" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Process</a>
           <a href="#tools" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Tools</a>
           <a href="#starter-kit" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Starter Kit</a>
