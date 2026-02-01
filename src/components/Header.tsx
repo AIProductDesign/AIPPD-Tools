@@ -2,7 +2,13 @@ import { Sparkles } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <>
+      <div className="bg-yellow-50 border-b border-yellow-200 px-6 py-3 text-center">
+        <p className="text-sm text-yellow-800 font-medium">
+          ⚠️ This is a prototype and still under construction. Features and content may change.
+        </p>
+      </div>
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-lg">
@@ -22,5 +28,6 @@ export function Header() {
         </nav>
       </div>
     </header>
+    </>
   );
 }
